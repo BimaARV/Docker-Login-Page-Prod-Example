@@ -21,8 +21,8 @@ This project demonstrates a simple Node.js backend application with Docker conta
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/nodejs-backend-app.git
-cd nodejs-backend-app
+git clone this repo
+cd Docker-Login-Page-Prod-Example
 ```
 
 ### 2. Install Dependencies
@@ -58,7 +58,7 @@ docker compose up --detach --build
 ## Project Structure
 
 ```
-nodejs-backend-app/
+Docker-Login-Page-Prod-Example/
 ├── public/               # Static files
 │   └── login.html        # Login page
 ├── dist/                 # Production build (generated)
@@ -118,16 +118,22 @@ k6 run load-test.js
 1. Build the Docker image:
 
 ```bash
-docker-compose build
+docker compose build
 ```
 
 2. Start the container:
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
-3. Verify it's running:
+3. Build and Start Docker Compose
+
+```bash
+docker compose up --detach --build
+```
+
+4. Verify it's running:
 
 ```bash
 docker ps
@@ -162,7 +168,7 @@ import http from 'k6/http';
 import { check, sleep } from 'k6';
 
 export const options = {
-  vus: 100,
+  vus: 100, #virtual user
   duration: '30s',
 };
 
@@ -199,14 +205,14 @@ If containers fail to start:
 1. Check logs:
 
 ```bash
-docker-compose logs
+docker compose logs
 ```
 
 2. Rebuild from scratch:
 
 ```bash
-docker-compose down
-docker-compose up --build
+docker compose down
+docker compose up --detach --build
 ```
 
 ## License
